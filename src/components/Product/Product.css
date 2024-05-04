@@ -43,6 +43,7 @@
     position: absolute;
     bottom: 0;
 }
+
 .btn-cart:hover{
     background-color: #f59f1f;
     border: 2px solid #0E161A;
