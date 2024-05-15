@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 import './Shop.css';
 import Product from '../Product/Product';
 import Cart from '../Cart/Cart';
-import { addToDb, getShoppingCart } from '../../utilities/fakedb';
+import { addToDb, deleteShoppingCart, getShoppingCart } from '../../utilities/fakedb';
+import { Link } from 'react-router-dom';
+import { FaArrowRight } from 'react-icons/fa';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
+    // console.log(products);
 
     useEffect(() => {
         fetch('products.json')
@@ -35,16 +38,21 @@ const Shop = () => {
         let newCart = [];
         // const newCart = [...cart, product];
         const exists = cart.find(pd => pd.id === product.id);
-        if(!exists) {
+        if (!exists) {
             product.quantity = 1;
-            newCart =[...cart, product]
-        }else {
+            newCart = [...cart, product]
+        } else {
             exists.quantity = exists.quantity + 1;
             const remaining = cart.filter(pd => pd.id !== product.id);
             newCart = [...remaining, exists];
         }
         setCart(newCart);
         addToDb(product.id);
+    }
+
+    const handleDeleteCart = () => {
+        setCart([]);
+        deleteShoppingCart();
     }
 
     return (
@@ -55,7 +63,11 @@ const Shop = () => {
                 }
             </div>
             <div className="carts-container">
-                <Cart cart={cart} />
+                <Cart cart={cart} handleDeleteCart={handleDeleteCart}>
+                    <Link className='processed-link' to={'/order'}>
+                        <button className='processed-btn'><span>Review Order </span> <FaArrowRight /></button>
+                    </Link>
+                </Cart>
             </div>
         </div>
     );

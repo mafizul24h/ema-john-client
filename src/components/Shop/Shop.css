@@ -9,3 +9,22 @@
     grid-gap: 20px;
     margin: 50px;
 }
+
+.processed-link {
+    text-decoration: none;
+}
+
+.processed-btn{
+    width: 100%;
+    margin: 0 auto;
+    padding: 15px;
+    background: orange;
+    color: #FFF;
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
