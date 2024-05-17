@@ -16,7 +16,7 @@ const Cart = ({ cart, handleDeleteCart, children }) => {
         shippingCharge = shippingCharge + product.shipping;
         quantity = quantity + product.quantity;
     }
-    const tax = total + 0.10;
+    const tax = total * 0.10;
     const grandTotal = total + shippingCharge + tax;
     // const totalPrice = cart.reduce((sum, curr) => sum + curr.price, 0);
     // console.log(tax);
