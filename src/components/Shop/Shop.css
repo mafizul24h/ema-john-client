@@ -28,3 +28,20 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+.pagination {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.pagination button, .select-option {
+    padding: 10px;
+    margin-left: 5px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+.selected-page {
+    background: #ffa500;
+}
